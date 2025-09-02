@@ -11,6 +11,7 @@ import torchvision.transforms as T
 import wandb
 import re
 import argparse
+import matplotlib.pyplot as plt
 
 # Get cpu, gpu device for training.
 # mps does not (yet) support nn.EmbeddingBag.
@@ -96,13 +97,36 @@ class TextTransform():
 
     def __call__(self, text):
         return self.tokenize_and_numericalize(text)
+
+class TruncateToMaxLen():
+    def __init__(self, max_len):
+        self.max_len = max_len
+
+    def __call__(self, text):
+        return text[:self.max_len]
+    
+class PadToMaxLen():
+    def __init__(self, max_len, pad_idx):
+        self.max_len = max_len
+        self.pad_idx = pad_idx
+
+    def __call__(self, text):
+        return text + [self.pad_idx] * (self.max_len - len(text))
     
 class ToIntTensor():
     def __call__(self, x):
         return torch.tensor(x, dtype=torch.int64)
 
 def length_histogram(train_data, pad_idx):
-    raise NotImplementedError("TODO: implement length_histogram")
+    lengths = []
+    for text, _ in train_data:
+        lengths.append(len(text))
+    plt.hist(lengths, bins=25)
+    plt.xlabel("Length")
+    plt.ylabel("Frequency")
+    plt.title("Length Histogram")
+    plt.savefig("length_histogram_hw0_4_1.png")
+    plt.close()
 
 def get_data(args):    
     train_data = CsvTextDataset(
@@ -119,7 +143,6 @@ def get_data(args):
         ])
     else:
         print("Padding and truncation will be applied.")
-        raise NotImplementedError("TODO: Implement two transforms: TruncateToMaxLen and PadToMaxLen")
         transform_txt = T.Compose([
             TextTransform(corpus_info.tokenizer, corpus_info.vocab),
             TruncateToMaxLen(args.max_len),
@@ -165,6 +188,21 @@ class TextClassificationModel(nn.Module):
     def forward(self, text):
         embedded = self.embedding(text)
         return self.fc(embedded)
+
+class LSTMTextClassifier(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim, num_class, pad_idx):
+        super(LSTMTextClassifier, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True)
+        self.adaptive_pool = nn.AdaptiveMaxPool1d(1)
+        self.fc = nn.Linear(hidden_dim, num_class)
+
+    def forward(self, text):
+        embedded = self.embedding(text)
+        lstm_out, _ = self.lstm(embedded)
+        permuted = lstm_out.permute(0, 2, 1)
+        pooled = self.adaptive_pool(permuted).squeeze(2)
+        return self.fc(pooled)
 
 
 def train_one_epoch(dataloader, model, criterion, optimizer, epoch):
@@ -212,7 +250,17 @@ def main(args):
     torch.manual_seed(10999)
     
     if args.use_wandb:
-        raise NotImplementedError("TODO: implement wandb logging.")
+        # get the hyperparameters dict
+        hyperparameters = {
+            "model": args.model,
+            "optimizer": args.optimizer,
+            "lr": args.lr,
+            "batch_size": args.batch_size,
+            "embed_dim": args.embed_dim,
+            "max_len": args.max_len,
+            "epochs": args.epochs,
+        }
+        wandb.init(project="hw0_txt_classifier_shrinivr", name="neural-the-narwhal_adam_lstm", config=hyperparameters, entity="stablegradients")
     else:
         wandb.init(mode='disabled')
         
@@ -221,7 +269,7 @@ def main(args):
     if args.model == 'simple':
         model = TextClassificationModel(corpus_info.vocab_size, args.embed_dim, corpus_info.num_labels).to(device)
     elif args.model == 'lstm':
-        raise NotImplementedError("TODO: implement LSTM model.")
+        model = LSTMTextClassifier(corpus_info.vocab_size, args.embed_dim, 64, corpus_info.num_labels, corpus_info.pad_idx).to(device)
     else:
         raise ValueError(f"Unknown model type: {args.model}")
     
@@ -230,7 +278,7 @@ def main(args):
     if args.optimizer == 'sgd':
         optimizer = torch.optim.SGD(model.parameters(), lr=args.lr)
     elif args.optimizer == 'adam':
-        raise NotImplementedError("TODO: implement Adam optimizer.")
+        optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
     else:
         raise ValueError(f"Unknown optimizer type: {args.optimizer}")
         
@@ -241,6 +289,7 @@ def main(args):
         epoch_start_time = time.time()
         train_one_epoch(train_dataloader, model, criterion, optimizer, epoch)
         accu_val = evaluate(val_dataloader, model, criterion)
+        wandb.log({"val_accuracy": accu_val, "epoch": epoch})
         if total_accu is not None and total_accu > accu_val:
             scheduler.step()
         else:
@@ -257,6 +306,7 @@ def main(args):
     print("Checking the results of test dataset.")
     accu_test = evaluate(test_dataloader, model, criterion)
     print("test accuracy {:8.3f}".format(accu_test))
+    wandb.log({"test_accuracy": accu_test, "epoch": epoch})
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
