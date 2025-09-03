@@ -260,7 +260,7 @@ def main(args):
             "max_len": args.max_len,
             "epochs": args.epochs,
         }
-        wandb.init(project="hw0_txt_classifier_shrinivr", name="neural-the-narwhal_adam_lstm", config=hyperparameters, entity="stablegradients")
+        wandb.init(project="hw0_txt_classifier_shrinivr", name="neural-the-narwhal_adam", config=hyperparameters, entity="stablegradients")
     else:
         wandb.init(mode='disabled')
         
@@ -289,7 +289,8 @@ def main(args):
         epoch_start_time = time.time()
         train_one_epoch(train_dataloader, model, criterion, optimizer, epoch)
         accu_val = evaluate(val_dataloader, model, criterion)
-        wandb.log({"val_accuracy": accu_val, "epoch": epoch})
+        accu_train = evaluate(train_dataloader, model, criterion)
+        wandb.log({"val_accuracy": accu_val, "train_accuracy": accu_train, "epoch": epoch})
         if total_accu is not None and total_accu > accu_val:
             scheduler.step()
         else:

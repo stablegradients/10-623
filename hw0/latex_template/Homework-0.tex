@@ -755,7 +755,7 @@ For different machines/python versions, you may need to tweak the exact version 
     \begin{checkboxes}
         % YOUR ANSWER
         % Change \choice to \CorrectChoice for the appropriate selection/selections 
-        \choice Yes 
+        \CorrectChoice Yes 
         \choice No
     \end{checkboxes}
 
@@ -765,7 +765,7 @@ For different machines/python versions, you may need to tweak the exact version 
     \begin{checkboxes}
         % YOUR ANSWER
         % Change \choice to \CorrectChoice for the appropriate selection/selections 
-        \choice Yes 
+        \CorrectChoice Yes 
     \end{checkboxes}
 \end{parts}
 
@@ -792,6 +792,7 @@ Complete the following readings before you begin.
 \part[2]  How does PyTorch's autograd system compute gradients, and why is this feature essential for training neural networks?
 
     \begin{answer_box}[title=,height=4cm, width=15cm]
+    PyTorch builds a \emph{dynamic} computation graph during the forward pass, where tensors with \lstinline{requires_grad=True} remember the operation that produced them through \lstinline{grad_fn}. When I call \lstinline{loss.backward()} it performs reverse mode automatic differentiation: the graph is traversed from the scalar loss back to the leaves, the chain rule is applied as vector Jacobian products, and the results are accumulated into each parameter’s \lstinline{.grad}. If $y=M(x;\theta)$ and $g_y=\tfrac{\partial J}{\partial y}$, autograd computes $\tfrac{\partial J}{\partial x} = \left(\tfrac{\partial y}{\partial x}\right)^{\!\top} g_y$ and $\tfrac{\partial J}{\partial \theta} = \left(\tfrac{\partial y}{\partial \theta}\right)^{\!\top} g_y$, summing contributions over all paths. By default the graph is freed after \lstinline{backward()}, and I can keep it by setting \lstinline{retain_graph=True}. This mechanism is essential because reverse mode AD delivers all parameter gradients for a scalar objective in time comparable to roughly one forward pass, removing the need for manual derivatives.
 
 
     \end{answer_box}
@@ -801,6 +802,7 @@ Complete the following readings before you begin.
 \part[2] Why is it beneficial to use something like wandb.log() over just printing the loss or accuracy every epoch?
 
     \begin{answer_box}[title=,height=4cm, width=15cm]
+    Compared with printing, \lstinline{wandb.log(...)} provides persistent, structured, time stamped records that do not vanish in console scrollback. It generates interactive plots automatically, enables side by side run comparisons, and supports logging media such as images, tables, confusion matrices, and model checkpoints that \texttt{print} cannot handle. I can search, filter, and group by metric, tag, or configuration, and step or epoch alignment keeps a coherent timeline even when I log asynchronously from different parts of the code. The cloud dashboard makes collaboration and sharing straightforward. Also it improves reproducibility by storing configuration and environment details, optionally the Git commit and random seed, and by allowing runs to resume as well as easy export to CSV or JSON.
 
 
     \end{answer_box}
@@ -808,6 +810,11 @@ Complete the following readings before you begin.
 \part[2] What do the MaxLen and PadSequence classes do in txt\_classifier.py? Explain when and why each one is used.
 
     \begin{answer_box}[title=,height=4cm, width=15cm]
+    \textbf{MaxLen (TruncateToMaxLen).} Cuts each tokenized sequence to a fixed maximum length $\texttt{max\_len}$. \emph{MaxLen} is applied per example before batching to bound sequence length.
+
+\textbf{PadSequence (PadToMaxLen).} Right-pads sequences shorter than $\texttt{max\_len}$ with the special padding token (index \texttt{CorpusInfo.pad\_idx}) so that all items in a batch share the same length. This is required to stack examples into a single tensor and to ensure downstream modules can ignore padded positions (via \texttt{padding\_idx}, masks, or packing). \emph{PadSequence} is applied at collate time so that batches have uniform shape and can be processed in parallel (batch size $>1$).
+
+
 
 
     \end{answer_box}
@@ -875,7 +882,8 @@ Instrument the existing code with \lstinline{wandb}. First, use \lstinline{wand.
 \part[3] Run the image classifier with the default hyperparameters. Using \lstinline{wandb}, plot the training loss of each batch vs. the total number of examples seen so far by the optimizer. The loss should be the average loss, taking the average within each batch. Name your run ``neural-the-narwhal''  and include the legend in your graph. (If you are having trouble figuring out how to enable a legend for a graph, please refer to \href{https://drive.google.com/file/d/1NKo4WmlOarRZLAlwhKu7YPnq0ZrL3dI3/view}{this short tutorial video}.)
 
     \begin{answer_box}[title=,height=9cm, width=15cm]
-
+    \centering
+    \includegraphics[width=0.8\linewidth]{HW0/fig/10623_hw0_3_1.png}
 
     \end{answer_box}
 
@@ -886,12 +894,15 @@ Instrument the existing code with \lstinline{wandb}. First, use \lstinline{wand.
 \part[4] Using \lstinline{wandb}, plot the train loss and the validation loss on the same plot with the number of epochs on the horizontal axis. The train loss should be averaged over the entire training dataset, and do likewise for the validation loss.
 
     \begin{answer_box}[title=,height=9cm, width=15cm]
-
+    \centering
+    \includegraphics[width=0.8\linewidth]{HW0/fig/10623_hw0_3_2.png}
     \end{answer_box}
 
 \part[4] Using \lstinline{wandb}, plot the train accuracy and validation accuracy on the same plot with the number of epochs on the horizontal axis. 
 
     \begin{answer_box}[title=,height=9cm, width=15cm]
+    \centering
+    \includegraphics[width=0.8\linewidth]{HW0/fig/10623_hw0_3_3.png}
     \end{answer_box}
 
 \newpage
@@ -906,8 +917,8 @@ Instrument the existing code with \lstinline{wandb}. First, use \lstinline{wand.
                 \toprule
                 Dataset & Image Type & Accuracy \\
                 \midrule
-                Test & Color & \\
-                Test & Grayscale & \\
+                Test & Color & 69.027\\
+                Test & Grayscale & 48.673\\
                 \bottomrule
             \end{tabular}
         \end{center}
@@ -917,6 +928,8 @@ Instrument the existing code with \lstinline{wandb}. First, use \lstinline{wand.
     \subpart[2] Does this support the hypothesis that the classifier wasn't really learning anything besides the color of the animals? Provide justification for your answer. 
 
         \begin{answer_box}[title=,height=3cm, width=\linewidth]
+        \textbf{No, the evidence suggests color helps but isn’t the only cue.} If the classifier relied \emph{only} on color, removing chroma should drive accuracy to chance, i.e., $1/3 \approx 33.33\%$ for three classes. Our grayscale result is $48.673\% \;{>}\; 33.33\%$, which indicates the model is also exploiting color-invariant features e.g., silhouettes/edges, textures, and distinctive parts (parrot beak/head ratio, narwhal tusk, axolotl external gills). The drop from the color model (typically higher) quantifies color’s contribution, but performance well above chance shows the network learns non-color structure as well.
+
         \end{answer_box}
 
 \end{subparts}
@@ -942,12 +955,16 @@ wandb.Image(Xi_denorm, caption="", mode="RGB")
     \subpart[2] Show the first batch of the test dataset captioned appropriately on wandb.\footnote{Naturally, you \emph{could} also do this a third time for the validation dataset, but we do not request that here.}
 
         \begin{answer_box}[title=,height=3cm, width=\linewidth]
+        \centering
+        \includegraphics[width=0.9\linewidth]{HW0/fig/10623_hw0_3_5_a.png}
         \end{answer_box}
 
 
     \subpart[2] Pick a few of the images on which the model made an error, and try to explain why it might have had difficult with those images. Answer in just a few sentences.
 
         \begin{answer_box}[title=,height=3cm, width=\linewidth]
+        Most errors were narwhal$\leftrightarrow$axolotl. Both appear in water with predominantly blue backgrounds, so background/texture priors are similar. In many mistakes aquatic context dominates making these two classes especially confusable.
+
         \end{answer_box}
 
 \end{subparts}
@@ -975,8 +992,8 @@ Pay special attention to the dimensions in bold that change across layers to det
                 \toprule
                 Dataset  & Accuracy (Original Model) & Accuracy (New Model) \\
                 \midrule
-                Train  & & \\
-                Test  & & \\
+                Train  & 89.484 & 77.438 \\
+                Test  & 69.487 & 65.487 \\
                 \bottomrule
             \end{tabular}
 
@@ -987,14 +1004,18 @@ Pay special attention to the dimensions in bold that change across layers to det
     \subpart[4] With \lstinline{wandb}, plot the train accuracy and validation accuracy \textbf{on the same plot} with the number of epochs on the horizontal axis. Include a run with the original model and a run with your new model. Name your runs ``new-model'' and ``base-model'' and include a legend. 
         
         \begin{answer_box}[title=,height=9cm, width=15cm]
+        \centering
+        \includegraphics[width=0.8\linewidth]{HW0/fig/10623_hw0_3_6_b.png}
         \end{answer_box}
 
     \subpart[2] How many parameters were in your original model and new model? (Refer to the recitation handout for how to calculate these numbers.)
 
         \begin{answer_box}[title=Original model,height=2cm, width=4cm]
+        100,928,003
         \end{answer_box}
         
         \begin{answer_box}[title=New model,height=2cm, width=4cm]
+        5,462,659
         \end{answer_box}
 
 \clearpage
@@ -1002,6 +1023,8 @@ Pay special attention to the dimensions in bold that change across layers to det
     \subpart[2] Did your new model perform better or worse on the test set than the original model? What about the training set? What factors might explain the differences in accuracy you observed between the models?
 
         \begin{answer_box}[title=,height=8cm, width=15cm]
+        The CNN shows a stronger inductive bias for images i.e. via locality and weight sharing (translation equivariance) so with far fewer parameters it attains comparable test accuracy while keeping a smaller train–test (generalization) gap. By contrast, the dense baseline (MLP) uses $\sim$20$\times$ more parameters, reaches higher training accuracy and can occasionally edge out test accuracy via sheer capacity, but it overfits more and exhibits a larger generalization gap (often latching onto background/color artifacts).
+
         \end{answer_box}
 
 \end{subparts}
@@ -1117,6 +1140,8 @@ python txt_classifier.py --batch_size 1 --max_len -1 --length_histogram
 }
 
     \begin{answer_box}[title=,height=5cm, width=15cm]
+    \centering
+    \includegraphics[width=0.43\linewidth]{HW0/fig/10623_hw0_4_1.png}
     \end{answer_box}
 
 \clearpage
@@ -1140,9 +1165,9 @@ python txt_classifier.py --batch_size 32 --max_len 1024
     \toprule
     \bf Batch Size & \bf Max Length & \bf Runtime (seconds) \\
     \midrule
-    1 & None & \\
-    1 & 1024 & \\
-    32 & 1024 & \\
+    1 & None & 2.84\\
+    1 & 1024 & 2.78\\
+    32 & 1024 & 1.38s \\
     \bottomrule
     \end{tabular}
     
@@ -1153,10 +1178,13 @@ python txt_classifier.py --batch_size 32 --max_len 1024
 python txt_classifier.py --batch_size 32 --max_len -1
 \end{lstlisting}
     \begin{answer_box}[title=,height=2cm, width=15cm]
+    \texttt{RuntimeError: stack expects each tensor to be equal size (got [258] at entry 0 and [141] at entry 1)}
     \end{answer_box}
     
     \subpart[2] Why does this last run yield this error?
     \begin{answer_box}[title=,height=2.5cm, width=15cm]
+    I’m getting \texttt{RuntimeError: stack expects each tensor to be equal size (got [258] at entry 0 and [141] at entry 1)} because the \lstinline{DataLoader} is trying to \lstinline{torch.stack} token tensors of unequal lengths into a batch; with \lstinline{--max_len -1} I disabled truncation/padding, so sequences keep their raw lengths. 
+
     \end{answer_box}
     
 \end{subparts}
@@ -1170,8 +1198,8 @@ python txt_classifier.py --batch_size 32 --max_len -1
         \toprule
         & Val. Acc. & Test Acc. \\
         \midrule
-        SGD & & \\
-        Adam & & \\
+        SGD & 50.00 & 50.00\\
+        Adam & 59.21 & 60.81\\
         \bottomrule
     \end{tabular}
     
@@ -1194,6 +1222,8 @@ Lastly, while your goal is to practice using LSTMs for text processing and under
 
     \subpart[2] In math, pseudocode, or a computation graph, describe the structure of your new model.
     \begin{answer_box}[title=,height=7cm, width=15cm]
+    \centering
+    \includegraphics[width=0.8\linewidth]{HW0/fig/10623_hw0_4_4_a.png}
     \end{answer_box}
 
     \subpart[4] Report the validation and test accuracies of your new model against the original model. The horizontal axis should be the number of epochs. Your results do not have to be better than the original model.  
@@ -1203,8 +1233,8 @@ Lastly, while your goal is to practice using LSTMs for text processing and under
         \toprule
         & Val. Acc. & Test Acc. \\
         \midrule
-        Original Model & & \\
-        LSTM Model & & \\
+        Original Model & 59.211 & 60.811\\
+        LSTM Model & 72.368 & 78.378\\
         \bottomrule
     \end{tabular}
     
@@ -1213,6 +1243,8 @@ Lastly, while your goal is to practice using LSTMs for text processing and under
     \subpart[2] Describe any differences in the train and validation accuracies between your model and the original model. In a few sentences, discuss why your model worked better or worse than the original model. Consider how input sequences are processed in an LSTM and how the presence of padding tokens might affect its learning.
 
     \begin{answer_box}[title=,height=4cm, width=15cm]
+    Compared to the original \texttt{TextClassificationModel}, the LSTM attains higher accuracy on train (99.4\% vs.\ 67.4\%) and validation (72.3\% vs.\ 59.2\%) but exhibits a much larger train–validation gap (27.1 vs.\ 8.2 points), signaling stronger overfitting. The improvement stems from sequence modeling: the LSTM preserves word order and captures dependencies (e.g., negation), whereas \texttt{EmbeddingBag} averages embeddings and discards order. Padding remains a caveat: although \texttt{padding\_idx} maps pad tokens to zero vectors, the LSTM still processes these time steps, which can dilute the hidden state for short sequences due to repeated application of non-linearity and $W_{hh}$ on the hidden state. 
+
     \end{answer_box}
     
 \end{subparts}
@@ -1221,6 +1253,8 @@ Lastly, while your goal is to practice using LSTMs for text processing and under
 \part[2] Look through a few of the real/fake news article pairs. In a few sentences, speculate on how the model is able to train successfully.
 
     \begin{answer_box}[title=,height=4cm, width=15cm]
+    I believe the model separates real from fake news by exploiting a cluster of surface regularities that correlate with the label. Fake pieces often adopt a conversational, assistant like tone, with closing phrases such as “Would you like me to…” or “Have a tip?”, whereas real pieces maintain a neutral journalistic voice. Formatting also differs in practice, since synthetic articles frequently include bracketed link patterns, emoji headers, lists, and stylized section banners, while real articles keep conventional newsroom layout. The overall structure diverges as well, because fabricated stories often add meta commentary or summaries such as “Here is a summary,” “In summary,” or “Bottom line,” whereas real reports present facts directly without this framing. Source attribution supplies another cue, as genuine articles reference outlets and reporters inline, for example “told WTOP” or “NEWS10 reported,” while fabricated texts lean on formal URL style citations and numbered references. Length and density contribute too, with synthetic items tending to be verbose and repetitive, while real items are concise and focused on essential facts. 
+
     \end{answer_box}
 
 \end{parts}
@@ -1235,7 +1269,7 @@ Lastly, while your goal is to practice using LSTMs for text processing and under
 \emph{Hint:} The correct answer is `yes'.
 
     \begin{checkboxes}
-     \choice Yes 
+     \CorrectChoice Yes 
      \choice No
     \end{checkboxes}
 
@@ -1253,11 +1287,13 @@ For HW0, you should upload \emph{two} files: \lstinline{img_classifier.py} and \
     \part[1] Did you collaborate with anyone on this assignment? If so, list their name or Andrew ID and which problems you worked together on.
 
         \begin{answer_box}[title=,height=3cm, width=15cm]
+        No
         \end{answer_box}
 
     
     \part[1] Did you find or come across code that implements any part of this assignment? If so, include full details.
         \begin{answer_box}[title=,height=3cm, width=15cm]
+        No
         \end{answer_box}
 \end{parts}
 \end{questions}
