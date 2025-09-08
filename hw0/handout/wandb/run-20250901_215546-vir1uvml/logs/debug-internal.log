@@ -1,0 +1,12 @@
+{"time":"2025-09-01T21:55:46.527919607-04:00","level":"INFO","msg":"stream: starting","core version":"0.21.3"}
+{"time":"2025-09-01T21:55:46.732605973-04:00","level":"INFO","msg":"stream: created new stream","id":"vir1uvml"}
+{"time":"2025-09-01T21:55:46.732656593-04:00","level":"INFO","msg":"stream: started","id":"vir1uvml"}
+{"time":"2025-09-01T21:55:46.732727222-04:00","level":"INFO","msg":"handler: started","stream_id":"vir1uvml"}
+{"time":"2025-09-01T21:55:46.732708722-04:00","level":"INFO","msg":"writer: started","stream_id":"vir1uvml"}
+{"time":"2025-09-01T21:55:46.732751092-04:00","level":"INFO","msg":"sender: started","stream_id":"vir1uvml"}
+{"time":"2025-09-01T21:55:46.966543992-04:00","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-09-01T21:56:18.819094644-04:00","level":"INFO","msg":"stream: closing","id":"vir1uvml"}
+{"time":"2025-09-01T21:56:19.100296025-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-01T21:56:19.230472954-04:00","level":"INFO","msg":"handler: closed","stream_id":"vir1uvml"}
+{"time":"2025-09-01T21:56:19.231345909-04:00","level":"INFO","msg":"sender: closed","stream_id":"vir1uvml"}
+{"time":"2025-09-01T21:56:19.231367439-04:00","level":"INFO","msg":"stream: closed","id":"vir1uvml"}

@@ -1,0 +1,58 @@
+_wandb:
+    value:
+        cli_version: 0.21.3
+        code_path: code/hw0/handout/img_classifier.py
+        e:
+            lni0qbay32cwjio185mqluti9nnwsu3u:
+                args:
+                    - --use_wandb
+                codePath: hw0/handout/img_classifier.py
+                codePathLocal: img_classifier.py
+                cpu_count: 20
+                cpu_count_logical: 40
+                disk:
+                    /:
+                        total: "252301017088"
+                        used: "13737443328"
+                email: shrinivasr@iisc.ac.in
+                executable: /zfsauton2/home/shrinivr/miniconda3/envs/py312/bin/python
+                git:
+                    commit: 43d34608f52a84596df99cbe448de8b5f060b770
+                    remote: https://github.com/stablegradients/10-623.git
+                host: gpu19
+                memory:
+                    total: "201376329728"
+                os: Linux-6.4.0-150600.23.60-default-x86_64-with-glibc2.38
+                program: /zfsauton2/home/shrinivr/10-623/hw0/handout/img_classifier.py
+                python: CPython 3.12.11
+                root: /zfsauton2/home/shrinivr/10-623/hw0/handout
+                startedAt: "2025-09-08T03:18:30.741915Z"
+                writerId: lni0qbay32cwjio185mqluti9nnwsu3u
+        m: []
+        python_version: 3.12.11
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 13
+                - 16
+            "4": 3.12.11
+            "5": 0.21.3
+            "12": 0.21.3
+            "13": linux-x86_64
+batch_size:
+    value: 8
+grayscale:
+    value: false
+learning_rate:
+    value: 0.001
+model:
+    value: simple
+n_epochs:
+    value: 5
+use_wandb:
+    value: true

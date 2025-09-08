@@ -1,0 +1,68 @@
+Padding and truncation will be applied.
+Shape of X [B, N]: torch.Size([8, 1024])
+Shape of y: torch.Size([8]) torch.int64
+Sample X: tensor([[  2,   3,   4,  ...,   1,   1,   1],
+        [  2,   3,   4,  ...,   1,   1,   1],
+        [192, 108, 193,  ...,   1,   1,   1],
+        ...,
+        [497, 161,  24,  ...,   1,   1,   1],
+        [831, 832, 833,  ...,   1,   1,   1],
+        [831, 832, 833,  ...,   1,   1,   1]])
+Sample y: tensor([1, 0, 0, 1, 0, 1, 0, 1])
+| epoch   1 |     5/   44 batches | accuracy    0.500
+| epoch   1 |    10/   44 batches | accuracy    0.500
+| epoch   1 |    15/   44 batches | accuracy    0.500
+| epoch   1 |    20/   44 batches | accuracy    0.475
+| epoch   1 |    25/   44 batches | accuracy    0.500
+| epoch   1 |    30/   44 batches | accuracy    0.500
+| epoch   1 |    35/   44 batches | accuracy    0.525
+| epoch   1 |    40/   44 batches | accuracy    0.500
+-----------------------------------------------------------
+| end of epoch   1 | time:  0.38s | valid accuracy    0.500
+-----------------------------------------------------------
+| epoch   2 |     5/   44 batches | accuracy    0.500
+| epoch   2 |    10/   44 batches | accuracy    0.525
+| epoch   2 |    15/   44 batches | accuracy    0.500
+| epoch   2 |    20/   44 batches | accuracy    0.500
+| epoch   2 |    25/   44 batches | accuracy    0.500
+| epoch   2 |    30/   44 batches | accuracy    0.500
+| epoch   2 |    35/   44 batches | accuracy    0.525
+| epoch   2 |    40/   44 batches | accuracy    0.525
+-----------------------------------------------------------
+| end of epoch   2 | time:  0.20s | valid accuracy    0.500
+-----------------------------------------------------------
+| epoch   3 |     5/   44 batches | accuracy    0.500
+| epoch   3 |    10/   44 batches | accuracy    0.525
+| epoch   3 |    15/   44 batches | accuracy    0.500
+| epoch   3 |    20/   44 batches | accuracy    0.500
+| epoch   3 |    25/   44 batches | accuracy    0.500
+| epoch   3 |    30/   44 batches | accuracy    0.500
+| epoch   3 |    35/   44 batches | accuracy    0.525
+| epoch   3 |    40/   44 batches | accuracy    0.500
+-----------------------------------------------------------
+| end of epoch   3 | time:  0.20s | valid accuracy    0.500
+-----------------------------------------------------------
+| epoch   4 |     5/   44 batches | accuracy    0.500
+| epoch   4 |    10/   44 batches | accuracy    0.525
+| epoch   4 |    15/   44 batches | accuracy    0.500
+| epoch   4 |    20/   44 batches | accuracy    0.500
+| epoch   4 |    25/   44 batches | accuracy    0.500
+| epoch   4 |    30/   44 batches | accuracy    0.500
+| epoch   4 |    35/   44 batches | accuracy    0.525
+| epoch   4 |    40/   44 batches | accuracy    0.500
+-----------------------------------------------------------
+| end of epoch   4 | time:  0.21s | valid accuracy    0.500
+-----------------------------------------------------------
+| epoch   5 |     5/   44 batches | accuracy    0.500
+| epoch   5 |    10/   44 batches | accuracy    0.500
+| epoch   5 |    15/   44 batches | accuracy    0.500
+| epoch   5 |    20/   44 batches | accuracy    0.475
+| epoch   5 |    25/   44 batches | accuracy    0.525
+| epoch   5 |    30/   44 batches | accuracy    0.500
+| epoch   5 |    35/   44 batches | accuracy    0.525
+| epoch   5 |    40/   44 batches | accuracy    0.500
+-----------------------------------------------------------
+| end of epoch   5 | time:  0.21s | valid accuracy    0.500
+-----------------------------------------------------------
+Checking the results of test dataset.
+test accuracy    0.500

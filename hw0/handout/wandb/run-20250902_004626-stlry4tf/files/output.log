@@ -1,0 +1,385 @@
+No padding or truncation will be applied.
+Shape of X [B, N]: torch.Size([1, 258])
+Shape of y: torch.Size([1]) torch.int64
+Sample X: tensor([[  2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15,
+          14,  16,  17,  18,  19,  20,  21,  14,  22,  23,  24,  25,  26,  27,
+          28,  29,  30,  31,  32,  33,   8,   9,  14,   2,   3,  10,  34,  24,
+          33,  14,  35,   7,  36,  37,  38,  14,  39,  40,  41,  42,  43,   5,
+           8,  44,  45,  30,  46,  47,   8,  48,  49,  50,  51,  52,  14,  15,
+          10,  38,  53,  54,  55,  47,  56,  57,  58,  14,  30,  59,  55,  24,
+          60,  14,  61,  30,  62,  16,  63,  64,  65,  66,  67,  68,  19,  20,
+          21,  10,  69,  70,  71,  72,  73,  58,  40,  74,   8,  75,  14,  76,
+          77,  78,  30,  79,  80,  10,  38,  81,  82,  83,  30,  84,  85,  86,
+          58,   8,  24,  87,  10,  58,  40,  88,  78,  89,  90,  14,  91,  92,
+          93,  94,  10,  38,  95,  24,  96,  85,  97,  98,  99, 100, 101,  78,
+         102,   2,   3,  10, 103, 104,  92, 105,  45, 106, 107,   8,  24, 108,
+          42, 109, 110, 111,  10, 112, 106, 113,  14,  38,  40, 114,  78,  49,
+          85, 115,   8, 116,  50,  12, 117,  10, 118,  40, 119,  78, 120, 121,
+         122, 123, 124,  78, 125, 126, 127,  10, 128, 129, 130, 131,  38,  16,
+          24,  96,  55,  24, 132,  14,  85,  24, 133, 134, 135, 136, 137,  24,
+         138,  14, 139,  10, 140,  10, 141,  14,  85,  24,   2,   3, 142, 143,
+          28,  10, 118, 144, 145, 146, 147,  45,  43,   5,  85, 135, 148,  55,
+         149, 150,  55,  30, 151,  10]])
+Sample y: tensor([1])
+| epoch   1 |     5/  350 batches | accuracy    0.167
+| epoch   1 |    10/  350 batches | accuracy    0.400
+| epoch   1 |    15/  350 batches | accuracy    0.000
+| epoch   1 |    20/  350 batches | accuracy    0.400
+| epoch   1 |    25/  350 batches | accuracy    0.400
+| epoch   1 |    30/  350 batches | accuracy    0.200
+| epoch   1 |    35/  350 batches | accuracy    0.000
+| epoch   1 |    40/  350 batches | accuracy    0.400
+| epoch   1 |    45/  350 batches | accuracy    0.200
+| epoch   1 |    50/  350 batches | accuracy    0.200
+| epoch   1 |    55/  350 batches | accuracy    0.200
+| epoch   1 |    60/  350 batches | accuracy    0.400
+| epoch   1 |    65/  350 batches | accuracy    0.200
+| epoch   1 |    70/  350 batches | accuracy    0.400
+| epoch   1 |    75/  350 batches | accuracy    0.400
+| epoch   1 |    80/  350 batches | accuracy    0.600
+| epoch   1 |    85/  350 batches | accuracy    0.000
+| epoch   1 |    90/  350 batches | accuracy    0.600
+| epoch   1 |    95/  350 batches | accuracy    0.400
+| epoch   1 |   100/  350 batches | accuracy    0.400
+| epoch   1 |   105/  350 batches | accuracy    0.400
+| epoch   1 |   110/  350 batches | accuracy    0.400
+| epoch   1 |   115/  350 batches | accuracy    0.600
+| epoch   1 |   120/  350 batches | accuracy    0.400
+| epoch   1 |   125/  350 batches | accuracy    0.400
+| epoch   1 |   130/  350 batches | accuracy    0.600
+| epoch   1 |   135/  350 batches | accuracy    0.400
+| epoch   1 |   140/  350 batches | accuracy    0.600
+| epoch   1 |   145/  350 batches | accuracy    0.200
+| epoch   1 |   150/  350 batches | accuracy    0.600
+| epoch   1 |   155/  350 batches | accuracy    0.400
+| epoch   1 |   160/  350 batches | accuracy    0.200
+| epoch   1 |   165/  350 batches | accuracy    0.600
+| epoch   1 |   170/  350 batches | accuracy    0.400
+| epoch   1 |   175/  350 batches | accuracy    0.200
+| epoch   1 |   180/  350 batches | accuracy    0.400
+| epoch   1 |   185/  350 batches | accuracy    0.600
+| epoch   1 |   190/  350 batches | accuracy    0.400
+| epoch   1 |   195/  350 batches | accuracy    0.400
+| epoch   1 |   200/  350 batches | accuracy    0.400
+| epoch   1 |   205/  350 batches | accuracy    0.600
+| epoch   1 |   210/  350 batches | accuracy    0.600
+| epoch   1 |   215/  350 batches | accuracy    0.400
+| epoch   1 |   220/  350 batches | accuracy    0.400
+| epoch   1 |   225/  350 batches | accuracy    0.600
+| epoch   1 |   230/  350 batches | accuracy    0.600
+| epoch   1 |   235/  350 batches | accuracy    0.400
+| epoch   1 |   240/  350 batches | accuracy    0.600
+| epoch   1 |   245/  350 batches | accuracy    0.400
+| epoch   1 |   250/  350 batches | accuracy    0.400
+| epoch   1 |   255/  350 batches | accuracy    0.600
+| epoch   1 |   260/  350 batches | accuracy    0.600
+| epoch   1 |   265/  350 batches | accuracy    0.600
+| epoch   1 |   270/  350 batches | accuracy    0.600
+| epoch   1 |   275/  350 batches | accuracy    0.400
+| epoch   1 |   280/  350 batches | accuracy    0.600
+| epoch   1 |   285/  350 batches | accuracy    0.200
+| epoch   1 |   290/  350 batches | accuracy    0.600
+| epoch   1 |   295/  350 batches | accuracy    0.400
+| epoch   1 |   300/  350 batches | accuracy    0.600
+| epoch   1 |   305/  350 batches | accuracy    0.400
+| epoch   1 |   310/  350 batches | accuracy    0.400
+| epoch   1 |   315/  350 batches | accuracy    0.600
+| epoch   1 |   320/  350 batches | accuracy    0.600
+| epoch   1 |   325/  350 batches | accuracy    0.400
+| epoch   1 |   330/  350 batches | accuracy    0.600
+| epoch   1 |   335/  350 batches | accuracy    0.400
+| epoch   1 |   340/  350 batches | accuracy    0.800
+| epoch   1 |   345/  350 batches | accuracy    0.600
+-----------------------------------------------------------
+| end of epoch   1 | time:  0.87s | valid accuracy    0.632
+-----------------------------------------------------------
+| epoch   2 |     5/  350 batches | accuracy    0.500
+| epoch   2 |    10/  350 batches | accuracy    0.600
+| epoch   2 |    15/  350 batches | accuracy    0.400
+| epoch   2 |    20/  350 batches | accuracy    0.600
+| epoch   2 |    25/  350 batches | accuracy    0.400
+| epoch   2 |    30/  350 batches | accuracy    0.400
+| epoch   2 |    35/  350 batches | accuracy    0.400
+| epoch   2 |    40/  350 batches | accuracy    0.600
+| epoch   2 |    45/  350 batches | accuracy    0.400
+| epoch   2 |    50/  350 batches | accuracy    0.400
+| epoch   2 |    55/  350 batches | accuracy    0.600
+| epoch   2 |    60/  350 batches | accuracy    0.600
+| epoch   2 |    65/  350 batches | accuracy    0.400
+| epoch   2 |    70/  350 batches | accuracy    0.600
+| epoch   2 |    75/  350 batches | accuracy    0.400
+| epoch   2 |    80/  350 batches | accuracy    0.600
+| epoch   2 |    85/  350 batches | accuracy    0.400
+| epoch   2 |    90/  350 batches | accuracy    0.600
+| epoch   2 |    95/  350 batches | accuracy    0.400
+| epoch   2 |   100/  350 batches | accuracy    0.600
+| epoch   2 |   105/  350 batches | accuracy    0.800
+| epoch   2 |   110/  350 batches | accuracy    0.600
+| epoch   2 |   115/  350 batches | accuracy    1.000
+| epoch   2 |   120/  350 batches | accuracy    0.800
+| epoch   2 |   125/  350 batches | accuracy    0.600
+| epoch   2 |   130/  350 batches | accuracy    0.800
+| epoch   2 |   135/  350 batches | accuracy    0.400
+| epoch   2 |   140/  350 batches | accuracy    1.000
+| epoch   2 |   145/  350 batches | accuracy    0.400
+| epoch   2 |   150/  350 batches | accuracy    0.600
+| epoch   2 |   155/  350 batches | accuracy    0.800
+| epoch   2 |   160/  350 batches | accuracy    0.400
+| epoch   2 |   165/  350 batches | accuracy    0.600
+| epoch   2 |   170/  350 batches | accuracy    1.000
+| epoch   2 |   175/  350 batches | accuracy    0.600
+| epoch   2 |   180/  350 batches | accuracy    0.400
+| epoch   2 |   185/  350 batches | accuracy    0.800
+| epoch   2 |   190/  350 batches | accuracy    0.600
+| epoch   2 |   195/  350 batches | accuracy    0.600
+| epoch   2 |   200/  350 batches | accuracy    0.600
+| epoch   2 |   205/  350 batches | accuracy    0.800
+| epoch   2 |   210/  350 batches | accuracy    0.600
+| epoch   2 |   215/  350 batches | accuracy    0.600
+| epoch   2 |   220/  350 batches | accuracy    0.600
+| epoch   2 |   225/  350 batches | accuracy    1.000
+| epoch   2 |   230/  350 batches | accuracy    0.800
+| epoch   2 |   235/  350 batches | accuracy    0.400
+| epoch   2 |   240/  350 batches | accuracy    0.600
+| epoch   2 |   245/  350 batches | accuracy    0.800
+| epoch   2 |   250/  350 batches | accuracy    0.800
+| epoch   2 |   255/  350 batches | accuracy    0.600
+| epoch   2 |   260/  350 batches | accuracy    0.600
+| epoch   2 |   265/  350 batches | accuracy    0.800
+| epoch   2 |   270/  350 batches | accuracy    0.800
+| epoch   2 |   275/  350 batches | accuracy    0.200
+| epoch   2 |   280/  350 batches | accuracy    0.600
+| epoch   2 |   285/  350 batches | accuracy    0.200
+| epoch   2 |   290/  350 batches | accuracy    0.800
+| epoch   2 |   295/  350 batches | accuracy    0.400
+| epoch   2 |   300/  350 batches | accuracy    0.600
+| epoch   2 |   305/  350 batches | accuracy    0.600
+| epoch   2 |   310/  350 batches | accuracy    0.600
+| epoch   2 |   315/  350 batches | accuracy    0.400
+| epoch   2 |   320/  350 batches | accuracy    0.800
+| epoch   2 |   325/  350 batches | accuracy    0.600
+| epoch   2 |   330/  350 batches | accuracy    0.600
+| epoch   2 |   335/  350 batches | accuracy    0.400
+| epoch   2 |   340/  350 batches | accuracy    0.600
+| epoch   2 |   345/  350 batches | accuracy    0.400
+-----------------------------------------------------------
+| end of epoch   2 | time:  0.70s | valid accuracy    0.697
+-----------------------------------------------------------
+| epoch   3 |     5/  350 batches | accuracy    0.500
+| epoch   3 |    10/  350 batches | accuracy    0.800
+| epoch   3 |    15/  350 batches | accuracy    0.200
+| epoch   3 |    20/  350 batches | accuracy    0.400
+| epoch   3 |    25/  350 batches | accuracy    0.600
+| epoch   3 |    30/  350 batches | accuracy    0.800
+| epoch   3 |    35/  350 batches | accuracy    0.800
+| epoch   3 |    40/  350 batches | accuracy    1.000
+| epoch   3 |    45/  350 batches | accuracy    0.600
+| epoch   3 |    50/  350 batches | accuracy    0.400
+| epoch   3 |    55/  350 batches | accuracy    0.800
+| epoch   3 |    60/  350 batches | accuracy    0.800
+| epoch   3 |    65/  350 batches | accuracy    0.800
+| epoch   3 |    70/  350 batches | accuracy    0.800
+| epoch   3 |    75/  350 batches | accuracy    0.600
+| epoch   3 |    80/  350 batches | accuracy    0.800
+| epoch   3 |    85/  350 batches | accuracy    0.800
+| epoch   3 |    90/  350 batches | accuracy    0.600
+| epoch   3 |    95/  350 batches | accuracy    0.600
+| epoch   3 |   100/  350 batches | accuracy    0.600
+| epoch   3 |   105/  350 batches | accuracy    0.800
+| epoch   3 |   110/  350 batches | accuracy    0.800
+| epoch   3 |   115/  350 batches | accuracy    1.000
+| epoch   3 |   120/  350 batches | accuracy    0.800
+| epoch   3 |   125/  350 batches | accuracy    0.600
+| epoch   3 |   130/  350 batches | accuracy    0.800
+| epoch   3 |   135/  350 batches | accuracy    0.800
+| epoch   3 |   140/  350 batches | accuracy    1.000
+| epoch   3 |   145/  350 batches | accuracy    0.400
+| epoch   3 |   150/  350 batches | accuracy    0.800
+| epoch   3 |   155/  350 batches | accuracy    1.000
+| epoch   3 |   160/  350 batches | accuracy    0.800
+| epoch   3 |   165/  350 batches | accuracy    0.800
+| epoch   3 |   170/  350 batches | accuracy    1.000
+| epoch   3 |   175/  350 batches | accuracy    0.400
+| epoch   3 |   180/  350 batches | accuracy    0.800
+| epoch   3 |   185/  350 batches | accuracy    1.000
+| epoch   3 |   190/  350 batches | accuracy    0.800
+| epoch   3 |   195/  350 batches | accuracy    0.800
+| epoch   3 |   200/  350 batches | accuracy    1.000
+| epoch   3 |   205/  350 batches | accuracy    0.600
+| epoch   3 |   210/  350 batches | accuracy    0.400
+| epoch   3 |   215/  350 batches | accuracy    0.600
+| epoch   3 |   220/  350 batches | accuracy    0.800
+| epoch   3 |   225/  350 batches | accuracy    1.000
+| epoch   3 |   230/  350 batches | accuracy    1.000
+| epoch   3 |   235/  350 batches | accuracy    0.600
+| epoch   3 |   240/  350 batches | accuracy    0.600
+| epoch   3 |   245/  350 batches | accuracy    0.800
+| epoch   3 |   250/  350 batches | accuracy    0.800
+| epoch   3 |   255/  350 batches | accuracy    0.600
+| epoch   3 |   260/  350 batches | accuracy    0.600
+| epoch   3 |   265/  350 batches | accuracy    0.800
+| epoch   3 |   270/  350 batches | accuracy    0.800
+| epoch   3 |   275/  350 batches | accuracy    0.200
+| epoch   3 |   280/  350 batches | accuracy    0.600
+| epoch   3 |   285/  350 batches | accuracy    0.200
+| epoch   3 |   290/  350 batches | accuracy    0.800
+| epoch   3 |   295/  350 batches | accuracy    0.800
+| epoch   3 |   300/  350 batches | accuracy    0.800
+| epoch   3 |   305/  350 batches | accuracy    1.000
+| epoch   3 |   310/  350 batches | accuracy    0.800
+| epoch   3 |   315/  350 batches | accuracy    0.400
+| epoch   3 |   320/  350 batches | accuracy    0.600
+| epoch   3 |   325/  350 batches | accuracy    0.800
+| epoch   3 |   330/  350 batches | accuracy    0.600
+| epoch   3 |   335/  350 batches | accuracy    0.600
+| epoch   3 |   340/  350 batches | accuracy    0.600
+| epoch   3 |   345/  350 batches | accuracy    0.600
+-----------------------------------------------------------
+| end of epoch   3 | time:  0.69s | valid accuracy    0.737
+-----------------------------------------------------------
+| epoch   4 |     5/  350 batches | accuracy    0.667
+| epoch   4 |    10/  350 batches | accuracy    0.800
+| epoch   4 |    15/  350 batches | accuracy    0.200
+| epoch   4 |    20/  350 batches | accuracy    1.000
+| epoch   4 |    25/  350 batches | accuracy    0.600
+| epoch   4 |    30/  350 batches | accuracy    0.800
+| epoch   4 |    35/  350 batches | accuracy    0.800
+| epoch   4 |    40/  350 batches | accuracy    1.000
+| epoch   4 |    45/  350 batches | accuracy    0.800
+| epoch   4 |    50/  350 batches | accuracy    0.400
+| epoch   4 |    55/  350 batches | accuracy    0.800
+| epoch   4 |    60/  350 batches | accuracy    0.800
+| epoch   4 |    65/  350 batches | accuracy    1.000
+| epoch   4 |    70/  350 batches | accuracy    0.800
+| epoch   4 |    75/  350 batches | accuracy    0.600
+| epoch   4 |    80/  350 batches | accuracy    1.000
+| epoch   4 |    85/  350 batches | accuracy    0.800
+| epoch   4 |    90/  350 batches | accuracy    0.600
+| epoch   4 |    95/  350 batches | accuracy    0.400
+| epoch   4 |   100/  350 batches | accuracy    0.800
+| epoch   4 |   105/  350 batches | accuracy    0.800
+| epoch   4 |   110/  350 batches | accuracy    1.000
+| epoch   4 |   115/  350 batches | accuracy    1.000
+| epoch   4 |   120/  350 batches | accuracy    0.800
+| epoch   4 |   125/  350 batches | accuracy    0.600
+| epoch   4 |   130/  350 batches | accuracy    0.800
+| epoch   4 |   135/  350 batches | accuracy    1.000
+| epoch   4 |   140/  350 batches | accuracy    1.000
+| epoch   4 |   145/  350 batches | accuracy    0.400
+| epoch   4 |   150/  350 batches | accuracy    0.800
+| epoch   4 |   155/  350 batches | accuracy    1.000
+| epoch   4 |   160/  350 batches | accuracy    0.800
+| epoch   4 |   165/  350 batches | accuracy    0.800
+| epoch   4 |   170/  350 batches | accuracy    1.000
+| epoch   4 |   175/  350 batches | accuracy    0.400
+| epoch   4 |   180/  350 batches | accuracy    0.800
+| epoch   4 |   185/  350 batches | accuracy    1.000
+| epoch   4 |   190/  350 batches | accuracy    0.800
+| epoch   4 |   195/  350 batches | accuracy    0.800
+| epoch   4 |   200/  350 batches | accuracy    1.000
+| epoch   4 |   205/  350 batches | accuracy    0.800
+| epoch   4 |   210/  350 batches | accuracy    0.600
+| epoch   4 |   215/  350 batches | accuracy    0.800
+| epoch   4 |   220/  350 batches | accuracy    0.800
+| epoch   4 |   225/  350 batches | accuracy    1.000
+| epoch   4 |   230/  350 batches | accuracy    1.000
+| epoch   4 |   235/  350 batches | accuracy    0.800
+| epoch   4 |   240/  350 batches | accuracy    0.600
+| epoch   4 |   245/  350 batches | accuracy    1.000
+| epoch   4 |   250/  350 batches | accuracy    0.800
+| epoch   4 |   255/  350 batches | accuracy    0.600
+| epoch   4 |   260/  350 batches | accuracy    0.600
+| epoch   4 |   265/  350 batches | accuracy    1.000
+| epoch   4 |   270/  350 batches | accuracy    0.800
+| epoch   4 |   275/  350 batches | accuracy    0.400
+| epoch   4 |   280/  350 batches | accuracy    0.600
+| epoch   4 |   285/  350 batches | accuracy    0.600
+| epoch   4 |   290/  350 batches | accuracy    0.800
+| epoch   4 |   295/  350 batches | accuracy    0.800
+| epoch   4 |   300/  350 batches | accuracy    0.800
+| epoch   4 |   305/  350 batches | accuracy    1.000
+| epoch   4 |   310/  350 batches | accuracy    0.800
+| epoch   4 |   315/  350 batches | accuracy    0.600
+| epoch   4 |   320/  350 batches | accuracy    0.600
+| epoch   4 |   325/  350 batches | accuracy    0.600
+| epoch   4 |   330/  350 batches | accuracy    0.600
+| epoch   4 |   335/  350 batches | accuracy    0.600
+| epoch   4 |   340/  350 batches | accuracy    0.800
+| epoch   4 |   345/  350 batches | accuracy    0.600
+-----------------------------------------------------------
+| end of epoch   4 | time:  0.70s | valid accuracy    0.737
+-----------------------------------------------------------
+| epoch   5 |     5/  350 batches | accuracy    0.833
+| epoch   5 |    10/  350 batches | accuracy    0.800
+| epoch   5 |    15/  350 batches | accuracy    0.400
+| epoch   5 |    20/  350 batches | accuracy    0.800
+| epoch   5 |    25/  350 batches | accuracy    0.600
+| epoch   5 |    30/  350 batches | accuracy    0.800
+| epoch   5 |    35/  350 batches | accuracy    0.800
+| epoch   5 |    40/  350 batches | accuracy    1.000
+| epoch   5 |    45/  350 batches | accuracy    0.800
+| epoch   5 |    50/  350 batches | accuracy    0.400
+| epoch   5 |    55/  350 batches | accuracy    0.800
+| epoch   5 |    60/  350 batches | accuracy    0.800
+| epoch   5 |    65/  350 batches | accuracy    1.000
+| epoch   5 |    70/  350 batches | accuracy    0.800
+| epoch   5 |    75/  350 batches | accuracy    0.600
+| epoch   5 |    80/  350 batches | accuracy    1.000
+| epoch   5 |    85/  350 batches | accuracy    0.800
+| epoch   5 |    90/  350 batches | accuracy    0.800
+| epoch   5 |    95/  350 batches | accuracy    0.400
+| epoch   5 |   100/  350 batches | accuracy    0.800
+| epoch   5 |   105/  350 batches | accuracy    1.000
+| epoch   5 |   110/  350 batches | accuracy    1.000
+| epoch   5 |   115/  350 batches | accuracy    1.000
+| epoch   5 |   120/  350 batches | accuracy    0.800
+| epoch   5 |   125/  350 batches | accuracy    0.800
+| epoch   5 |   130/  350 batches | accuracy    0.800
+| epoch   5 |   135/  350 batches | accuracy    1.000
+| epoch   5 |   140/  350 batches | accuracy    1.000
+| epoch   5 |   145/  350 batches | accuracy    0.600
+| epoch   5 |   150/  350 batches | accuracy    0.800
+| epoch   5 |   155/  350 batches | accuracy    1.000
+| epoch   5 |   160/  350 batches | accuracy    0.800
+| epoch   5 |   165/  350 batches | accuracy    0.800
+| epoch   5 |   170/  350 batches | accuracy    1.000
+| epoch   5 |   175/  350 batches | accuracy    0.600
+| epoch   5 |   180/  350 batches | accuracy    0.800
+| epoch   5 |   185/  350 batches | accuracy    1.000
+| epoch   5 |   190/  350 batches | accuracy    0.800
+| epoch   5 |   195/  350 batches | accuracy    0.800
+| epoch   5 |   200/  350 batches | accuracy    1.000
+| epoch   5 |   205/  350 batches | accuracy    0.800
+| epoch   5 |   210/  350 batches | accuracy    0.800
+| epoch   5 |   215/  350 batches | accuracy    1.000
+| epoch   5 |   220/  350 batches | accuracy    0.800
+| epoch   5 |   225/  350 batches | accuracy    1.000
+| epoch   5 |   230/  350 batches | accuracy    1.000
+| epoch   5 |   235/  350 batches | accuracy    0.800
+| epoch   5 |   240/  350 batches | accuracy    0.600
+| epoch   5 |   245/  350 batches | accuracy    1.000
+| epoch   5 |   250/  350 batches | accuracy    0.800
+| epoch   5 |   255/  350 batches | accuracy    0.600
+| epoch   5 |   260/  350 batches | accuracy    0.600
+| epoch   5 |   265/  350 batches | accuracy    1.000
+| epoch   5 |   270/  350 batches | accuracy    0.800
+| epoch   5 |   275/  350 batches | accuracy    0.400
+| epoch   5 |   280/  350 batches | accuracy    0.600
+| epoch   5 |   285/  350 batches | accuracy    0.600
+| epoch   5 |   290/  350 batches | accuracy    0.800
+| epoch   5 |   295/  350 batches | accuracy    1.000
+| epoch   5 |   300/  350 batches | accuracy    0.800
+| epoch   5 |   305/  350 batches | accuracy    1.000
+| epoch   5 |   310/  350 batches | accuracy    0.800
+| epoch   5 |   315/  350 batches | accuracy    0.600
+| epoch   5 |   320/  350 batches | accuracy    0.600
+| epoch   5 |   325/  350 batches | accuracy    0.600
+| epoch   5 |   330/  350 batches | accuracy    0.600
+| epoch   5 |   335/  350 batches | accuracy    0.600
+| epoch   5 |   340/  350 batches | accuracy    0.800
+| epoch   5 |   345/  350 batches | accuracy    0.800
+-----------------------------------------------------------
+| end of epoch   5 | time:  0.69s | valid accuracy    0.803
+-----------------------------------------------------------
+Checking the results of test dataset.
+test accuracy    0.743

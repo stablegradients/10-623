@@ -1,0 +1,62 @@
+Using cuda device
+Shape of X [B, C, H, W]: torch.Size([8, 3, 256, 256])
+Shape of y: torch.Size([8]) torch.int64
+NeuralNetwork(
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (linear_relu_stack): Sequential(
+    (0): Linear(in_features=196608, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=512, out_features=3, bias=True)
+  )
+)
+
+Epoch 1
+-------------------------------
+Train batch avg loss = 1.080085  [    8/  523]
+Train batch avg loss = 1.748161  [   88/  523]
+Train batch avg loss = 1.078840  [  168/  523]
+Train batch avg loss = 1.128952  [  248/  523]
+Train batch avg loss = 0.904922  [  328/  523]
+Train batch avg loss = 0.390622  [  408/  523]
+Train batch avg loss = 1.050390  [  488/  523]
+Train accuracy = 67.5%, Train avg loss = 0.732228
+Test accuracy = 66.4%, Test avg loss = 0.847722
+
+Epoch 2
+-------------------------------
+Train batch avg loss = 0.877228  [    8/  523]
+Train batch avg loss = 0.931074  [   88/  523]
+Train batch avg loss = 1.158947  [  168/  523]
+Train batch avg loss = 0.847202  [  248/  523]
+Train batch avg loss = 0.291636  [  328/  523]
+Train batch avg loss = 0.102131  [  408/  523]
+Train batch avg loss = 0.877705  [  488/  523]
+Traceback (most recent call last):
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/img_classifier.py", line 193, in <module>
+    main(args)
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/img_classifier.py", line 167, in main
+    train_correct, train_loss = evaluate(train_dataloader, "Train", model, loss_fn)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/img_classifier.py", line 124, in evaluate
+    for X, y in dataloader:
+                ^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 790, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/img_classifier.py", line 37, in __getitem__
+    image = Image.open(img_name).convert("RGB")  # Assuming RGB images
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/PIL/Image.py", line 986, in convert
+    self.load()
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/PIL/ImageFile.py", line 390, in load
+    n, err_code = decoder.decode(b)
+                  ^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

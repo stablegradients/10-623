@@ -1,0 +1,23 @@
+2025-09-01 23:18:45,600 INFO    MainThread:438777 [wandb_setup.py:_flush():81] Current SDK version is 0.21.3
+2025-09-01 23:18:45,600 INFO    MainThread:438777 [wandb_setup.py:_flush():81] Configure stats pid to 438777
+2025-09-01 23:18:45,600 INFO    MainThread:438777 [wandb_setup.py:_flush():81] Loading settings from /zfsauton2/home/shrinivr/.config/wandb/settings
+2025-09-01 23:18:45,601 INFO    MainThread:438777 [wandb_setup.py:_flush():81] Loading settings from /zfsauton2/home/shrinivr/10-623/hw0/handout/wandb/settings
+2025-09-01 23:18:45,601 INFO    MainThread:438777 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-09-01 23:18:45,602 INFO    MainThread:438777 [wandb_init.py:setup_run_log_directory():686] Logging user logs to /zfsauton2/home/shrinivr/10-623/hw0/handout/wandb/run-20250901_231845-gzx2zplu/logs/debug.log
+2025-09-01 23:18:45,602 INFO    MainThread:438777 [wandb_init.py:setup_run_log_directory():687] Logging internal logs to /zfsauton2/home/shrinivr/10-623/hw0/handout/wandb/run-20250901_231845-gzx2zplu/logs/debug-internal.log
+2025-09-01 23:18:45,603 INFO    MainThread:438777 [wandb_init.py:init():813] calling init triggers
+2025-09-01 23:18:45,603 INFO    MainThread:438777 [wandb_init.py:init():818] wandb.init called with sweep_config: {}
+config: {'model': 'cnn', 'batch_size': 8, 'learning_rate': 0.001, 'n_epochs': 5, 'grayscale': False, 'use_wandb': True, '_wandb': {'code_path': 'code/hw0/handout/img_classifier.py'}}
+2025-09-01 23:18:45,603 INFO    MainThread:438777 [wandb_init.py:init():854] starting backend
+2025-09-01 23:18:45,810 INFO    MainThread:438777 [wandb_init.py:init():857] sending inform_init request
+2025-09-01 23:18:45,814 INFO    MainThread:438777 [wandb_init.py:init():865] backend started and connected
+2025-09-01 23:18:45,815 INFO    MainThread:438777 [wandb_init.py:init():936] updated telemetry
+2025-09-01 23:18:45,823 INFO    MainThread:438777 [wandb_init.py:init():960] communicating run to backend with 90.0 second timeout
+2025-09-01 23:18:46,179 INFO    MainThread:438777 [wandb_init.py:init():1011] starting run threads in backend
+2025-09-01 23:18:46,239 INFO    MainThread:438777 [wandb_run.py:_console_start():2494] atexit reg
+2025-09-01 23:18:46,239 INFO    MainThread:438777 [wandb_run.py:_redirect():2342] redirect: wrap_raw
+2025-09-01 23:18:46,240 INFO    MainThread:438777 [wandb_run.py:_redirect():2411] Wrapping output streams.
+2025-09-01 23:18:46,240 INFO    MainThread:438777 [wandb_run.py:_redirect():2434] Redirects installed.
+2025-09-01 23:18:46,242 INFO    MainThread:438777 [wandb_init.py:init():1057] run started, returning control to user process
+2025-09-01 23:18:51,017 INFO    wandb-AsyncioManager-main:438777 [service_client.py:_forward_responses():84] Reached EOF.
+2025-09-01 23:18:51,017 INFO    wandb-AsyncioManager-main:438777 [mailbox.py:close():137] Closing mailbox, abandoning 1 handles.

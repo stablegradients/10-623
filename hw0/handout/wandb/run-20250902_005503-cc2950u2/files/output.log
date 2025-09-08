@@ -1,0 +1,31 @@
+No padding or truncation will be applied.
+Traceback (most recent call last):
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/txt_classifier.py", line 312, in <module>
+    main(args)
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/txt_classifier.py", line 252, in main
+    corpus_info, train_dataloader, val_dataloader, test_dataloader = get_data(args)
+                                                                     ^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/10-623/hw0/handout/txt_classifier.py", line 173, in get_data
+    for X, y in train_dataloader:
+                ^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 790, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 55, in fetch
+    return self.collate_fn(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/_utils/collate.py", line 398, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/_utils/collate.py", line 212, in collate
+    collate(samples, collate_fn_map=collate_fn_map)
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/_utils/collate.py", line 155, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zfsauton2/home/shrinivr/miniconda3/envs/py312/lib/python3.12/site-packages/torch/utils/data/_utils/collate.py", line 272, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: stack expects each tensor to be equal size, but got [258] at entry 0 and [141] at entry 1

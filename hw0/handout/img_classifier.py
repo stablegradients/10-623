@@ -13,6 +13,7 @@ img_size = (256,256)
 num_labels = 3
 normalize_mean = [0.485, 0.456, 0.406]
 normalize_std = [0.229, 0.224, 0.225]
+num_channels = 3
 
 # Get cpu, gpu or mps device for training.
 device = (
@@ -54,10 +55,10 @@ def get_data(args):
         # Append grayscale transformation
         transform_img = T.Compose([
             T.ToTensor(), 
-            T.Grayscale(3),
             T.Resize(min(img_size[0], img_size[1]), antialias=True),  # Resize the smallest side to 256 pixels
             T.CenterCrop(img_size),  # Center crop to 256x256
             T.Normalize(mean=normalize_mean, std=normalize_std), # Normalize each color dimension
+            T.Grayscale(1),
         ])
         
     train_data = CsvImageDataset(
@@ -89,7 +90,7 @@ class NeuralNetwork(nn.Module):
         self.flatten = nn.Flatten()
         # First layer input size must be the dimension of the image
         self.linear_relu_stack = nn.Sequential(
-            nn.Linear(img_size[0] * img_size[1] * 3, 512),
+            nn.Linear(img_size[0] * img_size[1] * num_channels, 512),
             nn.ReLU(),
             nn.Linear(512, 512),
             nn.ReLU(),
@@ -109,7 +110,6 @@ class CNN(nn.Module):
         self.conv2 = nn.Conv2d(128, 128, 7, 1, 3)
         self.layernorm2 = nn.LayerNorm([128, 64, 64])
         self.conv3 = nn.Conv2d(128, 256, 1, 1)
-        self.layernorm3 = nn.LayerNorm([256, 64, 64])
         self.act1 = nn.GELU()
         self.conv4 = nn.Conv2d(256, 128, 1, 1)
         self.twod_avg_pool = nn.AvgPool2d((2, 2))
@@ -123,7 +123,6 @@ class CNN(nn.Module):
         x = self.conv2(x)
         x = self.layernorm2(x)
         x = self.conv3(x)
-        x = self.layernorm3(x)
         x = self.act1(x)
         x = self.conv4(x)
         x = self.twod_avg_pool(x)
@@ -200,7 +199,7 @@ def main(args):
             "grayscale": args.grayscale,
             "use_wandb": args.use_wandb,
         }
-        wandb.init(entity="stablegradients", project="hw0_img_classifier_shrinivr", name="neural-the-narwhal-cnn", config=hyperparameters)
+        wandb.init(entity="stablegradients", project="hw0_img_classifier_shrinivr", name="neural-the-narwhal-original", config=hyperparameters)
     else:
         wandb.init(mode='disabled')
     
@@ -214,13 +213,15 @@ def main(args):
     else:
         raise ValueError(f"Unknown model type: {args.model}")
     print(model)
+    # print model size
+    print("Model size: ", sum(p.numel() for p in model.parameters()))
     loss_fn = nn.CrossEntropyLoss(reduction='sum')
     optimizer = torch.optim.SGD(model.parameters(), lr=args.learning_rate)
 
     for t in range(args.n_epochs):
         print(f"\nEpoch {t+1}\n-------------------------------")
         train_one_epoch(train_dataloader, model, loss_fn, optimizer, t) 
-        if t == args.n_epochs - 1:
+        if t == args.n_epochs - 1 and args.log_images:
             is_last_epoch = True
         else:
             is_last_epoch = False
@@ -254,7 +255,7 @@ if __name__ == '__main__':
     parser.add_argument('--learning_rate', type=float, default=1e-3, help='The learning rate for the optimizer')
     parser.add_argument('--model', type=str, choices=['simple', 'cnn'], default='simple', help='The model type')
     parser.add_argument('--grayscale', action='store_true', default=False, help='Use grayscale images instead of RGB')
-    
+    parser.add_argument('--log-images', action='store_true', default=False, help='Log images to wandb')
     args = parser.parse_args()
     
     main(args)

@@ -1,0 +1,32 @@
+{
+  "os": "Linux-6.4.0-150600.23.60-default-x86_64-with-glibc2.38",
+  "python": "CPython 3.12.11",
+  "startedAt": "2025-09-08T02:53:39.596675Z",
+  "args": [
+    "--use_wandb",
+    "--grayscale"
+  ],
+  "program": "/zfsauton2/home/shrinivr/10-623/hw0/handout/img_classifier.py",
+  "codePath": "hw0/handout/img_classifier.py",
+  "codePathLocal": "img_classifier.py",
+  "git": {
+    "remote": "https://github.com/stablegradients/10-623.git",
+    "commit": "43d34608f52a84596df99cbe448de8b5f060b770"
+  },
+  "email": "shrinivasr@iisc.ac.in",
+  "root": "/zfsauton2/home/shrinivr/10-623/hw0/handout",
+  "host": "gpu19",
+  "executable": "/zfsauton2/home/shrinivr/miniconda3/envs/py312/bin/python",
+  "cpu_count": 20,
+  "cpu_count_logical": 40,
+  "disk": {
+    "/": {
+      "total": "252301017088",
+      "used": "13737402368"
+    }
+  },
+  "memory": {
+    "total": "201376329728"
+  },
+  "writerId": "1vxs85bd9nbie13x2mkmu5npitae9l1h"
+}
