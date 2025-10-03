@@ -1,0 +1,1 @@
+chargpt.py --model.rope=True --model.pretrained_folder='./out/chargpt_pretrained' --data.block_size=256

@@ -1,0 +1,1 @@
+chargpt.py --trainer.max_iters=200 --model.n_kv_head=2

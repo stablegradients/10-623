@@ -1,0 +1,1 @@
+chargpt.py --model.pretrained_folder='./out/chargpt-NG-NR-pretrain' --data.block_size=256

@@ -1,0 +1,1 @@
+chargpt.py --model.rope=True --trainer.max_iters=1200
